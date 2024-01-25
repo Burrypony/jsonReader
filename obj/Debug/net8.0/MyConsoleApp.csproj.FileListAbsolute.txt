@@ -15,3 +15,4 @@
 /Users/admin/code/c#/MyConsoleApp/obj/Debug/net8.0/MyConsoleApp.pdb
 /Users/admin/code/c#/MyConsoleApp/obj/Debug/net8.0/MyConsoleApp.genruntimeconfig.cache
 /Users/admin/code/c#/MyConsoleApp/obj/Debug/net8.0/ref/MyConsoleApp.dll
+/Users/admin/code/c#/MyConsoleApp/obj/Debug/net8.0/MyConsoleApp.sourcelink.json
