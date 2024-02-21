@@ -50,8 +50,36 @@ namespace ExtractTextWithFontSize
         static void Main(string[] args)
         {
 
-            string pdfPath = "/Users/admin/Downloads/5ECA7D7D89C05126A1191A3AF0B2D417.pdf"; // Replace with the path to your PDF file
-            string newPdfPath = "/Users/admin/Downloads/5ECA7D7D89C05126A1191A3AF0B2D417_new.pdf";
+
+
+            string pdfPath = "";
+            string newPdfPath = "";
+
+            while (string.IsNullOrEmpty(pdfPath))
+            {
+                Console.WriteLine("Please write path and pdf name:");
+                pdfPath = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(pdfPath))
+                {
+                    Console.WriteLine("The input cannot be empty. Please try again.");
+                }
+            }
+
+
+            // Replace with the path to your PDF file
+
+
+
+            while (string.IsNullOrEmpty(newPdfPath))
+            {
+                Console.WriteLine("Please write path and pdf name for a file with bookmars");
+                newPdfPath = Console.ReadLine();
+                if (string.IsNullOrEmpty(newPdfPath))
+                {
+                    Console.WriteLine("The input cannot be empty. Please try again.");
+                }
+            }
 
 
             List<CustomTextChunk> processedTextChunks = new List<CustomTextChunk>();
@@ -78,13 +106,13 @@ namespace ExtractTextWithFontSize
                 // Console.WriteLine(processedTextChunks[i].Text);
                 var currentTextChunk = processedTextChunks[i];
                 // Console.WriteLine($"i: {i}, wordPositionIndex:{wordPositionIndex}");
-                if (currentTextChunk.StartLocation[Vector.I1] - processedTextChunks[wordPositionIndex].EndLocation[Vector.I1] < 1)
+                if (currentTextChunk.StartLocation[Vector.I1] - processedTextChunks[wordPositionIndex].EndLocation[Vector.I1] < 1 && processedTextChunks[wordPositionIndex].Y == currentTextChunk.Y)
                 {
                     // Console.WriteLine($"currentTextChunk.EndLocation[Vector.I1] - processedTextChunks[wordPositionIndex].StartLocation[Vector.I1]: {currentTextChunk.StartLocation[Vector.I1] - processedTextChunks[wordPositionIndex].EndLocation[Vector.I1]}");
                     // Console.WriteLine($"processedTextChunks[wordPositionIndex].Text: {processedTextChunks[wordPositionIndex].Text}, currentTextChunk.Text: {currentTextChunk.Text}");
                     var joinText = new CustomTextChunk
                     {
-                        Text = processedTextChunks[wordPositionIndex].Text + "" + currentTextChunk.Text,
+                        Text = processedTextChunks[wordPositionIndex].Text + currentTextChunk.Text,
                         FontSize = currentTextChunk.FontSize,
                         StartLocation = processedTextChunks[wordPositionIndex].StartLocation,
                         EndLocation = currentTextChunk.EndLocation,
